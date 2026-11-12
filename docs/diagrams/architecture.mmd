@@ -1,0 +1,37 @@
+%%{init: {'theme':'neutral'}}%%
+flowchart TB
+  subgraph SRC["Sources de données"]
+    IC["API open data Infoclimat<br/>station OMM 07156"]
+    IOT["Capteurs IoT agricoles<br/>(phase 2)"]
+  end
+  subgraph ING["Ingestion batch"]
+    COL["Collecteur<br/>fenêtres de 30 jours<br/>reprise sur erreur"]
+    CLN["Nettoyage et<br/>contrôle qualité"]
+  end
+  subgraph STO["Stockage et préparation"]
+    AGG["Agrégation journalière<br/>régionale"]
+    DB[("SQLite<br/>observation, daily_weather<br/>collection_run, prediction_log")]
+  end
+  subgraph ML["Apprentissage hors ligne"]
+    FEA["Variables<br/>sans fuite"]
+    TRN["Entraînement et<br/>validation temporelle"]
+    REG[["Artefacts<br/>model_obs, model_clim<br/>metadata.json"]]
+  end
+  subgraph SRV["Service"]
+    API["API FastAPI /v1<br/>predict, history,<br/>model, health"]
+  end
+  subgraph CLT["Clients"]
+    UI["Interface Streamlit"]
+    EXT["Systèmes tiers<br/>outils agricoles"]
+  end
+  CI["CI/CD GitHub Actions<br/>lint, tests, image Docker"]
+  IC -->|"HTTPS JSON + jeton"| COL
+  IOT -.->|"MQTT ou HTTPS"| COL
+  COL --> CLN --> DB
+  DB --> AGG --> DB
+  DB --> FEA --> TRN --> REG
+  REG --> API
+  DB --> API
+  API -->|"HTTP JSON"| UI
+  API -->|"HTTP JSON + X-API-Key"| EXT
+  CI -.-> API
