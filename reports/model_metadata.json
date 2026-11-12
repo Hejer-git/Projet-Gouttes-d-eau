@@ -1,0 +1,175 @@
+{
+  "model_version": "20261112-a8945bca",
+  "code_version": "0.1.0",
+  "trained_at_utc": "2026-11-12T16:02:22+00:00",
+  "data_source": "csv",
+  "representative": true,
+  "data_period": [
+    "2021-12-31",
+    "2026-11-12"
+  ],
+  "n_days_total": 1746,
+  "n_samples_obs_model": 1560,
+  "target": "jour de pluie (cumul régional >= seuil), cible = `rain_day`",
+  "obs_features": [
+    "doy_sin",
+    "doy_cos",
+    "temp_mean_l1",
+    "temp_range_l1",
+    "pressure_l1",
+    "pressure_delta_1",
+    "pressure_delta_3",
+    "humidity_l1",
+    "humidity_mean_3",
+    "wind_l1",
+    "rain_log_l1",
+    "rain_day_l1",
+    "rain_freq_7",
+    "rain_mean_7"
+  ],
+  "calendar_features": [
+    "doy_sin",
+    "doy_cos"
+  ],
+  "selected_model": "random_forest",
+  "cross_validation": {
+    "logreg": {
+      "brier_mean": 0.2151,
+      "roc_auc_mean": 0.6518
+    },
+    "random_forest": {
+      "brier_mean": 0.1835,
+      "roc_auc_mean": 0.7017
+    },
+    "hist_gb": {
+      "brier_mean": 0.2056,
+      "roc_auc_mean": 0.6506
+    }
+  },
+  "test_period": [
+    "2025-12-14",
+    "2026-10-23"
+  ],
+  "test_metrics": {
+    "selected_model": {
+      "n": 312,
+      "base_rate": 0.2083,
+      "roc_auc": 0.7855,
+      "pr_auc": 0.4457,
+      "brier": 0.1387,
+      "log_loss": 0.4319,
+      "accuracy": 0.7885,
+      "precision": 0.4762,
+      "recall": 0.1538,
+      "f1": 0.2326,
+      "threshold": 0.5
+    },
+    "selected_model_at_alert_threshold": {
+      "n": 312,
+      "base_rate": 0.2083,
+      "roc_auc": 0.7855,
+      "pr_auc": 0.4457,
+      "brier": 0.1387,
+      "log_loss": 0.4319,
+      "accuracy": 0.7436,
+      "precision": 0.4359,
+      "recall": 0.7846,
+      "f1": 0.5604,
+      "threshold": 0.26
+    },
+    "alert_threshold": 0.26,
+    "climatology_baseline": {
+      "n": 312,
+      "base_rate": 0.2083,
+      "roc_auc": 0.6656,
+      "pr_auc": 0.3368,
+      "brier": 0.1654,
+      "log_loss": 0.5132,
+      "accuracy": 0.7917,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "threshold": 0.5
+    },
+    "persistence_baseline": {
+      "n": 312,
+      "base_rate": 0.2083,
+      "roc_auc": 0.6308,
+      "pr_auc": 0.2943,
+      "brier": 0.2436,
+      "log_loss": 3.3653,
+      "accuracy": 0.7564,
+      "precision": 0.4154,
+      "recall": 0.4154,
+      "f1": 0.4154,
+      "threshold": 0.5
+    },
+    "base_rate_baseline": {
+      "n": 312,
+      "base_rate": 0.2083,
+      "roc_auc": 0.5,
+      "pr_auc": 0.2083,
+      "brier": 0.1684,
+      "log_loss": 0.521,
+      "accuracy": 0.7917,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "threshold": 0.5
+    },
+    "brier_skill_score_vs_climatology": 0.1614
+  },
+  "reliability": [
+    {
+      "bin": "0.0-0.1",
+      "n": 64,
+      "mean_predicted": 0.077,
+      "observed_frequency": 0.031
+    },
+    {
+      "bin": "0.1-0.2",
+      "n": 89,
+      "mean_predicted": 0.144,
+      "observed_frequency": 0.09
+    },
+    {
+      "bin": "0.2-0.3",
+      "n": 65,
+      "mean_predicted": 0.248,
+      "observed_frequency": 0.231
+    },
+    {
+      "bin": "0.3-0.4",
+      "n": 46,
+      "mean_predicted": 0.348,
+      "observed_frequency": 0.391
+    },
+    {
+      "bin": "0.4-0.5",
+      "n": 27,
+      "mean_predicted": 0.444,
+      "observed_frequency": 0.444
+    },
+    {
+      "bin": "0.5-0.6",
+      "n": 21,
+      "mean_predicted": 0.543,
+      "observed_frequency": 0.476
+    }
+  ],
+  "risk_thresholds": {
+    "low_below": 0.3,
+    "high_from": 0.6
+  },
+  "eco": {
+    "training_wall_s": 3.66,
+    "training_cpu_s": 3.43,
+    "estimated_energy_wh": 0.0143,
+    "estimated_co2_g": 0.00063,
+    "assumptions": {
+      "cpu_power_w": 15.0,
+      "grid_g_co2_per_kwh": 44.0
+    },
+    "deep_learning": false
+  }
+}

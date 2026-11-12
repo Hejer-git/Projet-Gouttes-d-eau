@@ -1,0 +1,22 @@
+{
+  "status": "ok",
+  "period": [
+    "2021-12-31",
+    "2026-11-12"
+  ],
+  "completeness_obs_pct": 97.0,
+  "missing_values_pct": {
+    "temperature_c": 0.63,
+    "pressure_hpa": 0.49,
+    "humidity_pct": 0.63,
+    "wind_kmh": 0.64,
+    "rain_3h_mm": 4.97
+  },
+  "valid_target_days_pct": 90.5,
+  "rejected_rows_pct": 2.91,
+  "freshness_days": 0,
+  "rain_day_rate": 0.254,
+  "sources": [
+    "csv"
+  ]
+}
