@@ -24,7 +24,7 @@ risque de pluie pour une date et **interface graphique** de démonstration.
 
 ```bash
 python3.12 -m venv .venv
-source .venv/bin/activate          # Windows : .venv\Scripts\activate
+source .venv/bin/activate          
 pip install -r requirements-dev.txt
 pip install -e .
 pytest
@@ -68,7 +68,7 @@ Avec le seuil d'alerte de 0,26 (choisi par validation croisée), 78 % des jours 
 
 ## Limites
 
-- Une seule station amateur, non comparée à une station officielle ; 2022 est lacunaire.
+- Une seule station amateur, non comparée à une station officielle ; 2022 présente des données manquantes.
 - Risque « jour de pluie » oui/non : pas de quantité de pluie ni d'événements extrêmes.
 - Estimation statistique indicative, qui ne remplace pas une prévision opérationnelle.
 - Le prototype Streamlit n'est pas conforme au RGAA (voir `docs/accessibilite.md`).
